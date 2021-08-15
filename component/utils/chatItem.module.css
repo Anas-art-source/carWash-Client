@@ -1,0 +1,64 @@
+.chatItemContainer_secondary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 15rem;
+  /* background-color: purple; */
+  margin: 1rem 0;
+}
+
+.chatTextContainer_secondary {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.chatTextContainer_primary {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.timeStampContainer {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.3rem;
+}
+
+.timeStampContainer > p {
+  font-size: 0.7rem;
+}
+
+.chatItemContainer_primary {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 15rem;
+  /* background-color: red; */
+  margin: 1rem 0;
+}
+
+.chatText_secondary {
+  background-color: royalblue;
+  padding: 0.8rem;
+  border-radius: 15px;
+}
+
+.chatText_primary {
+  background-color: rgb(230, 230, 230);
+  padding: 0.8rem;
+  border-radius: 15px;
+}
+
+.chatText_secondary > p {
+  color: white;
+}
+
+.chatText_primary > p {
+  color: black;
+}

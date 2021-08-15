@@ -1,0 +1,9 @@
+.headerNamePlate {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.headerNamePlate > h3 {
+  font-weight: 400;
+}

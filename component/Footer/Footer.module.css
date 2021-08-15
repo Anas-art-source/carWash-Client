@@ -1,0 +1,112 @@
+.footerBox {
+  padding: 3rem;
+  width: 100%;
+  background-color: black;
+}
+
+.bookingBox {
+  padding: 2rem;
+  background-color: white;
+  max-width: 70rem;
+  margin: 0 auto;
+  margin-top: -5rem;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookingBox > button {
+  background-color: black;
+  padding: 1rem 2rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.bookingBox > button:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.questionBox > h3 {
+  font-size: 2rem;
+}
+
+.questionBox > p {
+  font-size: 1.4rem;
+  padding: 0.5rem;
+}
+
+.linkBox {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 4rem;
+}
+
+.linkBox > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.linkBox > div > h4 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.linkBox > div > a {
+  font-weight: 300;
+  color: rgb(195, 197, 199);
+}
+
+.iconBox {
+  display: flex;
+  gap: 0.7rem;
+}
+
+@media (max-width: 550px) {
+  .questionBox > h3 {
+    font-size: 1.4rem;
+  }
+
+  .questionBox > p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .footerBox {
+    padding: 0;
+  }
+  .bookingBox {
+    width: 100%;
+  }
+  .questionBox > h3 {
+    font-size: 1.4rem;
+  }
+
+  .bookingBox > button {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .questionBox > p {
+    font-size: 1rem;
+  }
+
+  .linkBox {
+    justify-content: space-between;
+    padding: 4rem 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .questionBox > h3 {
+    font-size: 1rem;
+  }
+
+  .questionBox > p {
+    font-size: 0.7rem;
+  }
+}

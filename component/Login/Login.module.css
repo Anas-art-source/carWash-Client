@@ -1,0 +1,106 @@
+.loginSection {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fad961;
+  background-image: linear-gradient(90deg, #fad961 0%, #f76b1c 100%);
+}
+
+.actionContainer {
+  width: 60rem;
+  min-width: 30rem;
+  display: flex;
+  padding: 1rem;
+  border-radius: 12px;
+  align-items: center;
+  background-color: white;
+}
+
+.imageContainer {
+  height: 400px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .imageContainer {
+    display: none;
+  }
+
+  .actionContainer {
+    width: 300px;
+  }
+}
+
+.loginContainer {
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContainer > h3 {
+  text-transform: uppercase;
+  color: rgb(255, 116, 92);
+  font-size: 1rem;
+}
+
+.formBox {
+  width: 20rem;
+  min-width: 300px;
+  padding: 0.7rem 0;
+  display: flex;
+  flex-direction: column;
+  /* align-items: stretch; */
+}
+
+.formBox > * {
+}
+
+.password {
+  width: 100%;
+}
+
+.btnSubmit {
+  padding: 1rem;
+  background-color: green;
+  border: none;
+  color: white;
+}
+
+.redirect {
+  color: blue;
+  cursor: pointer;
+}
+
+.redirect:hover {
+  text-decoration: underline;
+}
+
+.btnGoogle {
+  padding: 1rem;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.googleIcon {
+  font-size: 1.2rem;
+}
+
+.errorMessage {
+  padding: 1rem;
+  background-color: rgba(219, 0, 0, 0.603);
+}

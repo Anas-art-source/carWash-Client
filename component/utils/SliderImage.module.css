@@ -1,0 +1,50 @@
+.imageContainer {
+  background-color: black;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.imageSlideContainer {
+  display: flex;
+  height: 100%;
+}
+
+.pictureCounter {
+  padding: 0.5rem 1rem;
+  border-radius: 200px;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+}
+
+.leftArrow {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20000px;
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.rightArrow {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 20000px;
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

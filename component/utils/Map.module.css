@@ -1,0 +1,31 @@
+.marker {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border-radius: 1000px;
+  position: relative;
+  color: white;
+}
+
+.marker > * {
+  padding: 0;
+  margin: 0;
+}
+
+.marker::after {
+  content: "";
+  border: none;
+  border-top: 10px solid black;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+
+  z-index: 100;
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  clear: both;
+}

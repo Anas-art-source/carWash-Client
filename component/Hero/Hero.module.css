@@ -1,0 +1,116 @@
+.heroSection {
+  position: relative;
+}
+
+.heroActionBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.heroActionBox > h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+}
+
+.heroImg {
+  filter: brightness(0.6);
+}
+
+.heroForm {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.heroForm > * {
+  flex-grow: 1;
+}
+
+.heroFormButtonBox {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.heroFormButtonBox > button,
+.heroFormButtonBox > button:active {
+  padding: 1rem;
+  flex-basis: 40%;
+  border: none;
+  font-size: 1rem;
+  border-radius: 1000px;
+  transition: all 0.2s;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.filter {
+  background-color: white;
+}
+
+.submit {
+  background-color: rgb(7, 148, 7);
+  color: white;
+}
+
+.heroFormButtonBox > button:not(:active):hover {
+  transform: scale(1.03);
+  box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.2);
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  padding: 3rem;
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1500px) {
+  .heroActionBox > h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .heroActionBox > h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroActionBox > h1 {
+    font-size: 1.5rem;
+  }
+
+  .heroActionBox {
+    width: 80%;
+  }
+
+  .heroFormButtonBox > button,
+  .heroFormButtonBox > button:active {
+    border-radius: 0;
+  }
+}

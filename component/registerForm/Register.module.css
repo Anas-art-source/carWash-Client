@@ -1,0 +1,45 @@
+.screen {
+  padding: 7rem 0;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+}
+
+.formContainer {
+  width: 840px;
+  max-width: 840px;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerImageBox {
+  width: 800px;
+  max-width: 800px;
+  height: 300px;
+  background-color: lightgray;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.headingContainer {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.headingContainer h3 {
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.headingContainer p {
+  padding: 0.5rem 0;
+}
+
+.formFieldsContainer {
+  width: 100%;
+}

@@ -1,0 +1,35 @@
+.headingBox {
+  padding: 2rem 6rem;
+}
+
+.mainHeading {
+  font-size: 8rem;
+  color: rgb(245, 245, 245);
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.secondaryHeading {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-top: -5rem;
+}
+
+@media (max-width: 1200px) {
+  .headingBox {
+    padding: 3rem 4rem;
+  }
+  .mainHeading {
+    font-size: 6rem;
+  }
+
+  .secondaryHeading {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .headingBox {
+    padding: 3rem 2rem;
+  }
+}

@@ -1,0 +1,30 @@
+.serviceBox {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+}
+
+.serviceSectionBox {
+  padding-bottom: 10rem;
+}
+
+/* .serviceSectionBox {
+  padding: 0 2rem;
+} */
+
+@media (max-width: 900px) {
+  .serviceBox {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    overflow-x: scroll;
+  }
+
+  .serviceBox > * {
+    width: 20rem;
+  }
+}

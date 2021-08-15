@@ -1,0 +1,42 @@
+.actionBox {
+  margin-top: -1.5rem;
+}
+
+.descriptionBox {
+  background-color: white;
+  max-width: 35rem;
+  padding: 2rem;
+  margin: auto;
+  margin-top: -14rem;
+
+  position: relative;
+  z-index: 10;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.descriptionBox > h4 {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.descriptionBox > p {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  color: rgb(182, 182, 182);
+  padding-top: 1rem;
+}
+
+.descriptionBox > button {
+  padding: 1rem;
+  border: none;
+  background-color: black;
+  color: white;
+  display: block;
+  margin: 1rem 0 1rem auto;
+  transition: all 0.2s;
+}
+
+.descriptionBox > button:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}

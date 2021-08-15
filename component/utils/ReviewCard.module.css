@@ -1,0 +1,35 @@
+.reviewContainer {
+  display: flex;
+  padding: 0 1rem;
+}
+
+.imageAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  background-color: red;
+
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.reviewContentContainer {
+  flex-basis: 90%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ratingStarContainer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.reviewText {
+  text-align: justify;
+  font-size: 0.9rem;
+}
