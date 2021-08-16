@@ -96,6 +96,12 @@ const DUMMY_DATA_VENDOR = [
 
 export default function VendorSection () {
 
+    const vendors = React.useState();
+
+    React.useEffect(() => {
+
+    }, [])
+
     return (
         <div className={styles.vendorSectionContainer}>
             {DUMMY_DATA_VENDOR.map(vendor => <VendorCard 

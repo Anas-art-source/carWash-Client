@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ReactMapGL, {Marker, GeolocateControl} from 'react-map-gl';
 import LocalCarWashIcon from '@material-ui/icons/LocalCarWash';
 import styles from './Map.module.css'
+import { MAP_ACCESS_TOKEN } from '../../global.variable';
 
 
 const geolocateControlStyle= {
@@ -47,7 +48,7 @@ function Map(props) {
     <ReactMapGL
       {...viewport}
       onViewportChange={nextViewport => setViewport(nextViewport)}
-      mapboxApiAccessToken="pk.eyJ1IjoiYW5hcy1raGFuLTc1OTUiLCJhIjoiY2tyeTQ5c3h2MDA0NDJvcGpxbGw5NXU5aSJ9.i4cVP07RyPlGB9RLYMXL_Q"
+      mapboxApiAccessToken={MAP_ACCESS_TOKEN}
       mapStyle="mapbox://styles/anas-khan-7595/ckry4qlbo00uk18nn19jvljiu"
     > 
       <GeolocateControl
