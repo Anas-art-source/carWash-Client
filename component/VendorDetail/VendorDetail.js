@@ -9,14 +9,42 @@ import { Translate } from '@material-ui/icons';
 import Map from '../utils/Map'
 import Chat from '../utils/chatWindow';
 import AddReview from '../utils/addReview'
+import useFetch from '../hook/useFetch';
+import {API_URL} from '../../global.variable'
+import {useRouter} from "next/router";
+import {useSelector} from 'react-redux';
+import Footer from '../Footer/Footer'
+
 
 export default function VendorDetail () {
 
     const [activateChat, setActivateChat] = React.useState(false)
+    const {sendRequest, isLoading, isValid, setError, error, setIsValid} = useFetch()
+    const [vendor, setVendor] = React.useState()
+    const router = useRouter();
+    const userProfile = useSelector(state => state.userProfile)
+    
+    const vendorSide = userProfile.id === vendor?.owner ? true : false
 
-    console.log(activateChat, "SSASA")
+    
+    React.useEffect(async () => {
+
+        if (!router.query.vendorId) return
+        const response = await sendRequest(`${API_URL}/api/v1/vendor/${router.query.vendorId}`, "GET")
+
+        const [data] = response.data
+        setVendor(data)
+
+        console.log(data, "VERNDOR DETAIL")
+
+    }, [router])
 
 
+    if (!vendor) {
+        return null
+    }
+
+    
     
     return (
             <>
@@ -25,12 +53,12 @@ export default function VendorDetail () {
 
                     <div className={styles.detailVendorCard}> 
                         <div className={styles.imageContainer}>
-                        <SliderImage />
+                        <SliderImage photos={vendor.photos} />
                         </div>
 
                          <div className={styles.detailContainer}>
                             <div className={styles.nameRatingContainer}>
-                                 <h2>The Master Card Wash</h2>
+                                 <h2>{vendor.name}</h2>
 
                                  <div className={styles.chatButton} onClick={() => setActivateChat((prevState) => !prevState)}>
                                      <ChatIcon />
@@ -39,8 +67,8 @@ export default function VendorDetail () {
                                  </div>
 
                                  <div className={styles.ratingContainer}>
-                                     <h4>4.5</h4>
-                                     <p>(340)</p>
+                                     <h4>{vendor.averageRating || 0}</h4>
+                                     <p>({vendor.ratingCount || 0})</p>
 
                                  </div>
                             </div>
@@ -48,99 +76,78 @@ export default function VendorDetail () {
                             <div className={styles.additionDetailContainer}>
                                 <p>Member since 4-10-2020</p>
                                 <span></span>
-                                <p>Operates in Karachi</p>
+                                <p>Operates in {vendor.location.city}</p>
                                 <span></span>
-                                <p>0312-1202645</p>
+                                <p>{vendor.contactNumber}</p>
 
                                 <span></span>
 
                                 <div className={styles.imageAvatarContainer}>
-                                    <div className={styles.image}>
-                                        <NextImage  
-                                        loadersource="unsplash"
-                                        src={"photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3744&q=80"}
-                                        width={35}
-                                        height={35}
-                                        objectFit="cover"
-                                   />
-                                    </div>
-                                    <div className={styles.image}><NextImage  
-                                        loadersource="unsplash"
-                                        src={"photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3744&q=80"}
-                                        width={35}
-                                        height={35}
-                                        objectFit="cover"
-                                   />
-                                    </div>
-                                    <div className={styles.image}><NextImage  
-                                        loadersource="unsplash"
-                                        src={"photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3744&q=80"}
-                                        width={35}
-                                        height={35}
-                                        objectFit="cover"
-                                   />
-                                    </div>
+
+                                    {vendor.teamPhotos.map( tmPhoto => 
+                                         <div className={styles.image}>
+                                         <NextImage  
+                                         loadersource="localhost"
+                                         src={tmPhoto}
+                                         width={35}
+                                         height={35}
+                                         objectFit="cover"
+                                    />
+                                     </div>
+                                    )}
+                                   
                                 </div>
                             </div>
 
                          </div>
 
                          <div className={styles.mapContainer}>
-                             <Map />
+                             <Map coordinates={vendor.location.coordinates} />
 
                          </div>
 
                         <ul className={styles.productContainer}>
                             <h3 className={styles.serviceHeading}>Services</h3>
-                            <li className={styles.productItemContainer}>
+
+                            {vendor.services.map( service => 
+                                <li className={styles.productItemContainer}>
                                 <div className={styles.nameDescriptionContainer}>
                                         <h4>
-                                            Engine Wash - SUV
+                                            {service.title}
                                         </h4>
                                         <p>
-                                            It covers entire engine wash of SUV vehicle. We used Pressure wash techniques to ensure all the dust are wipe out to give your car a best Wash
+                                            {service.description}
                                         </p>
                                 </div>
 
                                 <div className={styles.priceContainer}>
-                                    <h2><span>Rs.</span> 800</h2>
+                                    <h2><span>Rs.</span> {service.price}</h2>
 
                                 </div>
 
                             </li>
-
-                            <li className={styles.productItemContainer}>
-                                <div className={styles.nameDescriptionContainer}>
-                                        <h4>
-                                            Engine Wash - SUV
-                                        </h4>
-                                        <p>
-                                            It covers entire engine wash of SUV vehicle. We used Pressure wash techniques to ensure all the dust are wipe out to give your car a best Wash
-                                        </p>
-                                </div>
-
-                                <div className={styles.priceContainer}>
-                                    <h2><span>Rs.</span> 800</h2>
-
-                                </div>
-
-                            </li>
+                            )}
 
                         </ul>
 
-
                         <div className={styles.reviewContainer}>
                             <h3 className={styles.reviewHeading}>Reviews</h3>
-                            <ReviewCard />
+                            {vendor.reviews ? vendor.reviews.map(review => <ReviewCard reviewObj={review} /> ) : <p>No reviews yet</p> }       
+                                
+                            {!vendorSide && <AddReview vendorId={vendor.id}  />}
 
-                            <AddReview />
+                
                         </div>
                     </div>
                     
-                    <div className={styles.chatBox}>
-                                <Chat chatDisplay={activateChat} />
+                    <div className={styles.chatBox}> 
+                                <Chat chatDisplay={activateChat}   vendorId={vendor.owner} vendorName={vendor.name} vendorPhoto={vendor.teamPhotos[0]} />
                         </div>
                  </div>  
+
+                <Footer />
+
+
             </>
     )
 }

@@ -10,10 +10,17 @@
 
 .chatTextContainer_secondary {
   flex-basis: 70%;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
+/* .chatText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
 
 .chatTextContainer_primary {
   flex-basis: 70%;

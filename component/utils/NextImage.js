@@ -21,10 +21,7 @@ export default function NextImage (props) {
 
       loaderFunc = ({ src, width, quality }) => {
         // BECAUSE PATH STARTS AFTER 34TH CHARACTER 
-        console.log(src)
-       const sliceIndexofPath = props.src.length - 24
-       src = props.src.slice(sliceIndexofPath)
-       console.log(src)
+        src = props.src.slice(28)
        return `http://localhost:1000/photo/${src}?w=${width}&q=${quality || 75}`
 
       }

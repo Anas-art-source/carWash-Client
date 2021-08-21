@@ -2,6 +2,8 @@ import React from "react";
 import styles from './HeroSection.module.css'
 import Image from "next/image";
 import HeroImage from '../images/heroImage.jpg'
+import NextImage from '../utils/NextImage'
+import { API_URL } from "../../global.variable";
 
 export default function HeroSection (props) {
 
@@ -16,8 +18,12 @@ export default function HeroSection (props) {
             </div>
 
             <div className={styles.heroRight}>
-                <Image 
-                    src={HeroImage}
+                <NextImage 
+
+                    loadersource='localhost'
+                    src={`${API_URL}/photo/hero/heroImage.jpg`}
+                    width={2000}
+                    height={1200}
                     alt="hero image"
                     className={styles.heroImage}
                 />

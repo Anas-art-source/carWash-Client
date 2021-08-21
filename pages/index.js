@@ -5,7 +5,6 @@ import CitySection from '../component/citySection/citySection';
 import Footer from '../component/Footer/Footer';
 import HeroSection from '../component/HeroSection/HeroSection';
 import { useRouter } from 'next/router'
-import socket from '../socket/socket';
 
 
 export default function Home() {
@@ -13,7 +12,6 @@ export default function Home() {
 
   
   function onClickVendor () {
-        socket.sendMessage({name: "anas"})
         router.push('/vendor')
 
   }

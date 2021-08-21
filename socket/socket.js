@@ -1,20 +1,28 @@
-import  {io} from "socket.io-client"
+// import  {io} from "socket.io-client"
 
 
 
-export class Socket  {
+// export class Socket  {
 
-    constructor () {
-        this.socket = io('http://localhost:1000', { transports: ['websocket', 'polling', 'flashsocket'] })
-    }
+//     constructor () {
+//         this.socket = io('http://localhost:1000', { transports: ['websocket', 'polling', 'flashsocket'] })
+//     }
 
-    sendMessage (messageObj) {
-        console.log(messageObj, "message in socket")
-        this.socket.emit("send_message", messageObj)
-    }
+//     sendMessage (message, room) {
+//         this.socket.emit("send_message", message, room)
+//     }
 
-}
+//     recieveMessage (fn) {
+//         console.log("Herer")
+//         this.socket.on("recieve_message", fn)
+//     }
 
-const socket = new Socket();
+//     joinRoom(roomId) {
+//         this.socket.emit("join_room", roomId)
+//     }
 
-export default socket; 
+// }
+
+// const socket = new Socket();
+
+// export default socket; 

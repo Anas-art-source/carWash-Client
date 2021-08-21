@@ -10,6 +10,7 @@
   height: 200px;
   position: relative;
   overflow: hidden;
+  filter: brightness(0.7);
 }
 
 .namePlate {

@@ -1,10 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit"
 import userProfileReducers from './userProfile'
-
+import socketReducer from './socket'
 
 const store = configureStore({
     reducer: {
-        userProfile: userProfileReducers
+        userProfile: userProfileReducers,
+        socket: socketReducer
     }
 })
 

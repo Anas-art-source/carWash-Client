@@ -27,7 +27,7 @@ function TextField (props) {
     }
 
     return (
-        <textarea  type="text" className={classTextField} placeholder={props.placeholder} ref={text} onChange={(e) => props.setText(e.target.value)} onKeyUp={grow}  value={props.value}></textarea>
+        <textarea  type="text" className={classTextField} placeholder={props.placeholder} ref={text} onChange={(e) => props.setText(e.target.value)} onKeyUp={grow}  value={props.value} ></textarea>
     )
 }
 

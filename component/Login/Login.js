@@ -1,9 +1,8 @@
 import React from "react";
 import styles from './Login.module.css'
 import PasswordInput from "../utils/PasswordInput"
-import { TextField } from "@material-ui/core";
-import Image from 'next/image';
-import loginVector from '../../public/4860253.jpg';
+import { TextField } from "@material-ui/core"
+import NextImage from "../utils/NextImage";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import {useRouter} from 'next/router';
@@ -11,7 +10,10 @@ import {GoogleLogin} from "react-google-login";
 import useFetch from '../hook/useFetch';
 import {useDispatch} from "react-redux";
 import {userProfileActions} from '../../store/userProfile';
+
 import {useCookies} from "react-cookie"
+import { API_URL } from "../../global.variable";
+
  
 const clientId = "479017269985-e8du6ocnp23pb562of83089ejcq2s6kk.apps.googleusercontent.com"
 const clientSecret = "3hdt4fbIwcL9PpYtidkDrDHS"
@@ -40,7 +42,6 @@ export default function Login (props) {
     const responseGoogle = async (res) => {
         
         const {profileObj} = res
-        console.log(profileObj)
 
         const data = {
             name: profileObj.name,
@@ -52,6 +53,7 @@ export default function Login (props) {
         const response = await sendRequest('http://localhost:1000/api/v1/google', "POST", data, false);
 
         if (response?.message === "successful") {
+            console.log(response, "USERPROFILE")
             dispatch(userProfileActions.login({...response.data, googleUser: true}))
             setCookie("userProfile", {...response.data, googleUser: true})
 
@@ -119,8 +121,9 @@ export default function Login (props) {
           <div className={styles.actionContainer}>
 
               <div className={styles.imageContainer}>
-                 <Image 
-                  src={loginVector}
+                 <NextImage 
+                 loadersource="localhost"
+                  src={`${API_URL}/photo/login/loginPhoto.jpg`}
                   alt="Login"
                  width={1000}
                   height={900}

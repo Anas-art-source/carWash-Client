@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import { useCookies } from 'react-cookie';
-
+import { API_URL } from "../global.variable";
 
 
 
@@ -10,7 +10,7 @@ const initialState = {
     name: "",
     id: "",
     email:  "",
-    photo: "",
+    photo: `${API_URL}/photo/user/userBasicAvatar.jpg`,
 
 }
 

@@ -22,23 +22,28 @@ export default function Header() {
     const [scrolled, setScrolled] = React.useState(false)
     const router = useRouter()
     const userProfile = useSelector(state => state.userProfile)
-    const [noFav, setNoFav] = React.useState()
-
+    const [fav, setFav] = React.useState()
+    
     const [cookie] = useCookies()
     const dispatch = useDispatch()
+
 
     const {sendRequest, isLoading, isValid, setError, error, setIsValid} = useFetch()
 
 
   
-    React.useEffect(() => {
+    React.useEffect(async () => {
 
         document.addEventListener("scroll", () => {
             if (window.scrollY > 0) return setScrolled(true);
             return setScrolled(false)
         })
 
+        
+        // TAKES USER ID FROM COOKIE AND UPDATE USERPROFILE ON MOUNT
         if (cookie?.userProfile) {
+            // const response = await sendRequest(`${API_URL}/api/v1/users/${cookie.userProfile.id}`, "GET")
+            // console.log(response, "USERPROFILE IN HEADER")
             dispatch(userProfileActions.login(cookie.userProfile))
           }
           
@@ -53,24 +58,27 @@ export default function Header() {
 
 
     React.useEffect(async () => {
-        if (favoriteDisplay) {
+        if (cookie.userProfile && favoriteDisplay) {
             const response = await sendRequest(`${API_URL}/api/v1/fav/${cookie.userProfile.id}`, "GET")
-            console.log(response)
             if (response.message === "successful") {
+                console.log(response, "FAV AT HEADER")
+                setFav(response.data)
             } else {
-                
-                console.log("hererer")
-                setNoFav(true)
+                setFav("")
             }
-
-
         }
 
     }, [favoriteDisplay])
 
-  
 
     return (
+        <>
+
+        {/* <div className={styles.loadAlert}>
+            dsahfashdjklashfkj
+        </div> */}
+
+
         <div className={scrolled ? styles.header_shadow : styles.header} ref={HeaderRef} >
             <div className={styles.headerLeft} onClick={() => router.push('/')}>
                 <h1>Car Wash</h1>
@@ -100,14 +108,14 @@ export default function Header() {
 
             {favoriteDisplay && 
             <div className={styles.favoriteWindow}>
-                {noFav && 
+                {!fav && 
                 <h4>No Favourites</h4>
                 }
-                {!noFav &&
-                <FavCard />
-                }
+                {fav && fav.map(vendor =>  <FavCard key={vendor._id} vendorId={vendor.vendor.id} name={vendor.vendor.name} photo={vendor.vendor.photo} location={vendor.vendor.location} /> )}
             </div>
             }
         </div>
+
+        </>
     )
 }
