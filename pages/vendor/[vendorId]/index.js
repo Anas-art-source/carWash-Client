@@ -6,7 +6,7 @@ export default function VendorDetail (props) {
 
     return (
         <> 
-            {props.vendor.map(vendor => <VendorDetailView vendor={vendor}/> )}
+            {props.vendor.map(vendor => <VendorDetailView key={vendor.id} vendor={vendor}/> )}
             
         </>
     )
