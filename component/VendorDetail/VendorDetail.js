@@ -16,28 +16,30 @@ import {useSelector} from 'react-redux';
 import Footer from '../Footer/Footer'
 
 
-export default function VendorDetail () {
+export default function VendorDetail ({vendor}) {
 
     const [activateChat, setActivateChat] = React.useState(false)
     const {sendRequest, isLoading, isValid, setError, error, setIsValid} = useFetch()
-    const [vendor, setVendor] = React.useState()
+
     const router = useRouter();
     const userProfile = useSelector(state => state.userProfile)
     
     const vendorSide = userProfile.id === vendor?.owner ? true : false
-
     
-    React.useEffect(async () => {
+    // const [vendor, setVendor] = React.useState()
+    
+    // React.useEffect(async () => {
 
-        if (!router.query.vendorId) return
-        const response = await sendRequest(`${API_URL}/api/v1/vendor/${router.query.vendorId}`, "GET")
+    //     if (!router.query.vendorId) return
+    //     const response = await sendRequest(`${API_URL}/api/v1/vendor/${router.query.vendorId}`, "GET")
 
-        const [data] = response.data
-        setVendor(data)
+    //     const [data] = response.data
+    //     setVendor(data)
 
-        console.log(data, "VERNDOR DETAIL")
+    //     console.log(data, "VERNDOR DETAIL")
 
-    }, [router])
+    // }, [router])
+
 
 
     if (!vendor) {

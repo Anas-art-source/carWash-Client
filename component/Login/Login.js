@@ -50,7 +50,7 @@ export default function Login (props) {
         }
 
         // MAKE API POST CALL HERE
-        const response = await sendRequest('http://localhost:1000/api/v1/google', "POST", data, false);
+        const response = await sendRequest(`${API_URL}/api/v1/google`, "POST", data, false);
 
         if (response?.message === "successful") {
             console.log(response, "USERPROFILE")
@@ -75,7 +75,7 @@ export default function Login (props) {
             }
 
 
-            const response = await sendRequest("http://localhost:1000/api/v1/users/login", "POST", loginFormData, false);
+            const response = await sendRequest(`${API_URL}/api/v1/users/login`, "POST", loginFormData, false);
 
             if (response?.message === 'successful') {
                 dispatch(userProfileActions.login({...response.data, googleUser: false}))
@@ -98,7 +98,7 @@ export default function Login (props) {
             signupData.append("passwordConfirm", passwordConfirm);
             signupData.append("photo", photo);
 
-            const response = await sendRequest("http://localhost:1000/api/v1/users/signup", "POST", signupData, true)
+            const response = await sendRequest(`${API_URL}/api/v1/users/signup`, "POST", signupData, true)
 
             if (response?.message === 'successful') {
                 dispatch(userProfileActions.login({...response.data, googleUser: false}))

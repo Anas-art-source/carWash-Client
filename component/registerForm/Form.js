@@ -7,7 +7,8 @@ import useFetch from "../hook/useFetch";
 import {useSelector} from "react-redux";
 import {useRouter} from 'next/router'
 import userProfile from "../../store/userProfile";
-import {useCookies} from 'react-cookie'
+import {useCookies} from 'react-cookie';
+import {API_URL} from '../../global.variable'
 
 function ServiceDetailForm (props) {
     // FORM VALIDATION USING CUSTOM HOOK
@@ -194,6 +195,9 @@ export default function Form () {
 
     // HANDLING THE SUBMIT FORM
     async function submitForm (e) {
+        
+        e.preventDefault()
+        if (businessPhotos.length === 0 || teamPhotos.length === 0) return setError("Upload Business and team Photos")
 
         const location = {
             type: "Point",
@@ -202,7 +206,6 @@ export default function Form () {
             address: address
         }
 
-        e.preventDefault()
         const data = new FormData()
 
         data.append("name", name);
@@ -222,13 +225,15 @@ export default function Form () {
             data.append("teamPhotos", file)
         })
 
-        const response = await sendRequest("http://localhost:1000/api/v1/vendor", "POST", data, true)
-        console.log(response)
+        console.log(API_URL, "API URL")
+
+        const response = await sendRequest(`${API_URL}/api/v1/vendor`, "POST", data, true)
+        console.log(response, "response")
         if (response?.message === "Successfully submitted") {
             setSuccess(response.message)
             setError(null)
         } else {
-            setError(response.message)
+            setError(response?.message)
             setSuccess(null)
         }
     }

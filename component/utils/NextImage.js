@@ -21,8 +21,10 @@ export default function NextImage (props) {
 
       loaderFunc = ({ src, width, quality }) => {
         // BECAUSE PATH STARTS AFTER 34TH CHARACTER 
-        src = props.src.slice(28)
-       return `http://localhost:1000/photo/${src}?w=${width}&q=${quality || 75}`
+        // src = props.src.slice(41)
+        const source = src.split("/photo")[1];
+        console.log(source)
+       return `https://car-wash-123.herokuapp.com/photo${source}?w=${width}&q=${quality || 75}`
 
       }
       

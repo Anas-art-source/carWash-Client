@@ -97,7 +97,7 @@ import { useSelector } from "react-redux";
 //     },
 // ]
 
-export default function VendorSection () {
+export default function VendorSection (props) {
 
     const [vendors, setVendors] = React.useState([]);
     const userProfile = useSelector(state => state.userProfile)
@@ -108,24 +108,24 @@ export default function VendorSection () {
         userFavArray = userProfile.favs?.map(fav => fav.vendor.id)
     }   
 
-    console.log(userFavArray, "USER FAV ARRAY")
+    console.log(props.vendorsList)
 
     React.useEffect(async () => {
 
-        const response = await  sendRequest(`${API_URL}/api/v1/vendor`, "GET");
-        if (response.message === "successful") {
-            setVendors(response.data)
-        } else {
-            setError(response.message)
-            console.log(response)
-        }
+        // const response = await  sendRequest(`${API_URL}/api/v1/vendor`, "GET");
+        // if (response.message === "successful") {
+        //     setVendors(response.data)
+        // } else {
+        //     setError(response.message)
+        //     console.log(response)
+        // }
 
     }, [])
 
     return (
         <div className={styles.vendorSectionContainer}>
 
-            {vendors.map(vendor => <VendorCard 
+            {props.vendorsList.map(vendor => <VendorCard 
              name={vendor.name} 
              fav={userFavArray?.includes(vendor.id) ? true : false}
             location={vendor.location.address}
